@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Viblo Asia</title>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./index.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+  </head>
+  <body>
+    <header>
+        <img src="https://viblo.asia/logo_full.svg" alt="_self" width="65px" height="auto">
+        <ul class="ul01">
+            <li class="li01">Bài viết</li>
+            <li class="li01">Hỏi đáp</li>
+            <li class="li01">Bình luận</li>
+        </ul>
+        <div class="d-flex border border-grey-700 rounded-lg">
+          <input class="w3-input w-200" type="text" placeholder="  Tìm kiếm trên Viblo" style="outline:none">
+          <i class="fa fa-search mt-1 ml-2 text-2xl" aria-hidden="true" style="background-color:lightblue;padding-left: 5px;padding-right: 5px;"></i>
+        </div>
+    </header>
+    <header2>
+      <ul class="ul02">
+        <li class="li02">NHÀ SÁNG TẠO NỘI DUNG</li>
+        <li class="li02">MỚI NHẤT</li>
+        <li class="li02">SERIES</li>
+        <li class="li02">EDITORS' CHOICE</li>
+        <li class="li02">TRENDING</li>
+        <li class="li02">VIDEOS</li>
+    </ul>
+    </header2>
+    <div id="list"></div>
+    <script>
+      $("document").ready(() => {
+        $.get(
+          "https://8c22c204b3474980b549d26caf5ab0eb.api.mockbin.io/",
+          (data, textStatus, xhr) => {
+            if (xhr.status === 200) {
+              showData(data);
+            }
+          }
+        );
+        function showData(arr) {
+          const list = document.getElementById("list");
+          const template =`<div id="template1"> <img id="logo" src="https://images.viblo.asia/avatar-retina/d3fbbb69-55f2-4530-99de-de866b71e9d8.png" alt="viblo">
+            <div class="w-3/5 flex flex-col"> 
+            <div class="first"><div class="id01">$id</div> <div id="publish">$published_at</div></div> <div id="main"><div><h2 id="link">$title<h2></div> <div id="system">$system</div> </div> <div>$slug</div> <div>$category_id</div> 
+            <div>$transliterated</div></div></div>`;
+          arr.forEach((element) => {
+            let newElement = template.replace("$id", element.id)
+              .replace("$title", element.title)
+              .replace("$slug", element.slug)
+              .replace("$category_id", element.category_id)
+              .replace("$published_at", element.published_at)
+              .replace("$system", element.system)
+              .replace("$transliterated", element.transliterated)
+            const div = document.createElement("div");
+            div.innerHTML = newElement;
+            list.appendChild(div);
+          });
+        }
+      });
+    </script>
+    <script>
+            var read = document.getElementById("link");
+      function read() {
+        link.innerHTML = <a href="./detailpage.html">{element.title}</a>
+      }
+    </script>
+  </body>
+</html>

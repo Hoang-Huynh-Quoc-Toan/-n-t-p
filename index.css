@@ -1,0 +1,64 @@
+#logo {
+    width: 35px;
+    height: 35px;
+}
+
+#template1 {
+    display: flex;
+}
+
+.first, #main {
+    display: flex;
+}
+
+#publish {
+    margin-left: 30px;
+}
+
+#system {
+    background-color: lightskyblue;
+    border-radius: 5px;
+    width: 120px;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-left: 10px;
+}
+
+.id01 {
+    color: rgb(3, 147, 195);
+}
+
+.ul01  {
+    list-style-type: none;
+    display: flex;
+    width: 500px;
+}
+
+.li01 {
+    width: 100px;
+    text-align: justify;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 4px;
+}
+
+.li02 {
+    width: auto;
+    margin-left: 30px;
+    text-align: center;
+
+}
+
+header {
+    display: flex;
+}
+
+.ul02 {
+    width: 100%;
+    display: flex;
+    padding: 25px 0;
+    background-color: rgb(4, 4, 100);
+    color: white;
+    font-weight:500;
+
+}
